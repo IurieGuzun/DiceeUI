@@ -8,25 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var leftDice = 1
+    @State var rightDice = 1
+    
     var body: some View {
         ZStack {
             Image("background")
                 .resizable()
                 .ignoresSafeArea()
             VStack {
+                Spacer()
                 Image("iGSrar")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100, alignment: .center)
+                Spacer()
                 HStack {
-                    DiceView(n: 2)
-                    DiceView(n: 4)
+                    DiceView(n: leftDice)
+                    DiceView(n: rightDice)
                 }
                 .padding()
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                    /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                Spacer()
+                Button(action: {
+                    print("Play Button has been pressed!")
+                    leftDice = Int.random(in: 1...6)
+                    rightDice = Int.random(in: 1...6)
+                }) {
+                    Text("Play")
+                        .font(.system(size: 50))
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
                 }
-                .padding()
+                .padding(.horizontal)
+                .background(Color.red)
+                Spacer()
             }
             
             
@@ -44,6 +60,7 @@ struct DiceView: View {
         Image("dice\(n)")
             .resizable()
             .aspectRatio(1, contentMode: .fit)
+            .padding()
     }
 }
 
