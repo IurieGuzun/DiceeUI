@@ -24,11 +24,13 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100, alignment: .center)
                 Spacer()
+                Spacer()
                 HStack {
                     DiceView(n: leftDice)
                     DiceView(n: rightDice)
                 }
                 .padding()
+                Spacer()
                 Spacer()
                 Button(action: {
                     print("Play Button has been pressed!")
